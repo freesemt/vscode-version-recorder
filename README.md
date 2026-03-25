@@ -33,6 +33,12 @@ gh release download v0.1.0 --repo freesemt/vscode-version-recorder --pattern "*.
 code --install-extension "$env:TEMP\vscode-version-recorder-0.1.0.vsix"
 ```
 
+> **VS Code Insiders users**: Use `code-insiders` instead of `code`:
+> ```powershell
+> code-insiders --install-extension "$env:TEMP\vscode-version-recorder-0.1.0.vsix"
+> ```
+> Installing with `code` when running Insiders will install the extension into the wrong version and it will not run.
+
 ### Manual
 
 1. Download `vscode-version-recorder-x.x.x.vsix` from [Releases](https://github.com/freesemt/vscode-version-recorder/releases)
