@@ -7,7 +7,7 @@ A VS Code extension that automatically records the current VS Code version to `.
 Using `alwaysApply: true` in `init.prompt.md` for GitHub Copilot requires VS Code 1.99 or later.  
 Since Copilot cannot autonomously retrieve the VS Code version, this extension acts as the bridge — writing the version to a file that Copilot can read.
 
-See the [AI Context Management Standard](https://github.com/freesemt/humanomics) for details.
+See the [AI Context Management Standard](https://github.com/freesemt/ai-context-standard) for details.
 
 ## How It Works
 
