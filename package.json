@@ -1,0 +1,28 @@
+{
+  "name": "vscode-version-recorder",
+  "displayName": "VS Code Version Recorder",
+  "description": "Automatically records VS Code version to .github/vscode-version.txt in each workspace folder",
+  "version": "0.1.0",
+  "publisher": "freesemt",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/freesemt/vscode-version-recorder"
+  },
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": ["Other"],
+  "activationEvents": ["onStartupFinished"],
+  "main": "./out/extension.js",
+  "contributes": {},
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/node": "^18.0.0",
+    "@types/vscode": "^1.80.0",
+    "typescript": "^5.0.0"
+  }
+}
