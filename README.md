@@ -1,17 +1,17 @@
 # vscode-version-recorder
 
-VS Code 拡張機能。ワークスペース内の `.github/vscode-version.txt` に VS Code のバージョンを自動記録します。
+A VS Code extension that automatically records the current VS Code version to `.github/vscode-version.txt` in each workspace folder.
 
-## 背景
+## Background
 
-GitHub Copilot の `init.prompt.md` で `alwaysApply: true` を使う場合、VS Code 1.99 以上が必要です。  
-Copilot は VS Code のバージョンを自律的に取得できないため、この拡張機能がその橋渡しをします。
+Using `alwaysApply: true` in `init.prompt.md` for GitHub Copilot requires VS Code 1.99 or later.  
+Since Copilot cannot autonomously retrieve the VS Code version, this extension acts as the bridge — writing the version to a file that Copilot can read.
 
-詳しくは [AI Context Management Standard](https://github.com/freesemt/humanomics) を参照してください。
+See the [AI Context Management Standard](https://github.com/freesemt/humanomics) for details.
 
-## 動作
+## How It Works
 
-VS Code 起動時（`onStartupFinished`）に、ワークスペース内の **`.github` フォルダが存在する全フォルダ** に対して `.github/vscode-version.txt` を自動更新します。
+On startup (`onStartupFinished`), the extension writes `.github/vscode-version.txt` in every workspace folder that has a `.github` directory.
 
 ```text
 # VS Code version used in this workspace
@@ -20,33 +20,33 @@ VS Code 起動時（`onStartupFinished`）に、ワークスペース内の **`.
 1.114.0-insider
 ```
 
-`.github` フォルダが存在しないワークスペースフォルダはスキップされます。
+Workspace folders without a `.github` directory are skipped.
 
-## インストール
+## Installation
 
-マーケットプレイスには公開していません。GitHub Releases から `.vsix` を取得してインストールしてください。
+This extension is not published to the Marketplace. Install it from GitHub Releases via `.vsix`.
 
-### `gh` CLI を使う場合（推奨）
+### Using `gh` CLI (recommended)
 
 ```powershell
 gh release download v0.1.0 --repo freesemt/vscode-version-recorder --pattern "*.vsix" --dir $env:TEMP
 code --install-extension "$env:TEMP\vscode-version-recorder-0.1.0.vsix"
 ```
 
-### 手動の場合
+### Manual
 
-1. [Releases](https://github.com/freesemt/vscode-version-recorder/releases) から `vscode-version-recorder-x.x.x.vsix` をダウンロード
-2. VS Code で `Ctrl+Shift+P` → `Extensions: Install from VSIX...` → ダウンロードした `.vsix` を選択
+1. Download `vscode-version-recorder-x.x.x.vsix` from [Releases](https://github.com/freesemt/vscode-version-recorder/releases)
+2. In VS Code: `Ctrl+Shift+P` → `Extensions: Install from VSIX...` → select the downloaded file
 
-インストール後、**VS Code を再起動**してください。
+**Restart VS Code** after installation.
 
-## 使い方
+## Usage
 
-インストールして再起動するだけです。自動で動作します。
+Install and restart. The extension runs automatically on every startup.
 
-`init.prompt.md` との連携では、ステップ0で `.github/vscode-version.txt` 内の `Auto-updated by vscode-version-recorder extension` という行を確認することで、拡張機能が正常に動作しているかを判定します。
+In `init.prompt.md`, Step 0 detects whether the extension is active by checking for the line `Auto-updated by vscode-version-recorder extension` in `.github/vscode-version.txt`.
 
-## ビルド（開発者向け）
+## Build (for developers)
 
 ```powershell
 npm install
@@ -54,6 +54,6 @@ npm run compile
 npx vsce package --no-dependencies
 ```
 
-## ライセンス
+## License
 
 MIT
